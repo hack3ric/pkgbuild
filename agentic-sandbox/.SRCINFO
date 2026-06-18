@@ -1,0 +1,22 @@
+pkgbase = agentic-sandbox
+	pkgdesc = Small Python wrapper around mkosi or podman for isolating LLM agents
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/hack3ric/agentic-sandbox
+	arch = any
+	license = BSD-2-Clause
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = fakeroot
+	optdepends = mkosi: mkosi backend support
+	optdepends = qemu-system-x86: mkosi VM support
+	optdepends = socat: mkosi port forwarding support
+	optdepends = podman: podman backend support
+	conflicts = agentic-sandbox-git
+	source = agentic-sandbox-0.1.0.tar.gz::https://github.com/hack3ric/agentic-sandbox/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = e4c751ce674d5735a089daa20f9bb71b35eb76082d4fa3aa177a59f96f83b1e5
+
+pkgname = agentic-sandbox

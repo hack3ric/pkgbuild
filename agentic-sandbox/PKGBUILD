@@ -1,0 +1,42 @@
+pkgname=agentic-sandbox
+pkgver=0.1.0
+pkgrel=1
+pkgdesc='Small Python wrapper around mkosi or podman for isolating LLM agents'
+arch=('any')
+url='https://github.com/hack3ric/agentic-sandbox'
+license=('BSD-2-Clause')
+conflicts=('agentic-sandbox-git')
+depends=(
+  'python'
+  'fakeroot'
+)
+makedepends=(
+  'python-build'
+  'python-installer'
+  'python-setuptools'
+  'python-wheel'
+)
+optdepends=(
+  'mkosi: mkosi backend support'
+  'qemu-system-x86: mkosi VM support'
+  'socat: mkosi port forwarding support'
+  'podman: podman backend support'
+)
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('e4c751ce674d5735a089daa20f9bb71b35eb76082d4fa3aa177a59f96f83b1e5')
+
+build() {
+  cd "$pkgname-$pkgver"
+  python -m build --wheel --no-isolation
+}
+
+check() {
+  cd "$pkgname-$pkgver"
+  python -m unittest discover -s tests -v
+}
+
+package() {
+  cd "$pkgname-$pkgver"
+  python -m installer --destdir="$pkgdir" dist/*.whl
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
