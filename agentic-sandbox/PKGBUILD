@@ -1,5 +1,5 @@
 pkgname=agentic-sandbox
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc='Small Python wrapper around mkosi or podman for isolating LLM agents'
 arch=('any')
@@ -23,7 +23,7 @@ optdepends=(
   'podman: podman backend support'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('e4c751ce674d5735a089daa20f9bb71b35eb76082d4fa3aa177a59f96f83b1e5')
+sha256sums=('314cc461ea5cbd9555d67ea97063c753794e2eeeebe8891143c08a30c4d8c895')
 
 build() {
   cd "$pkgname-$pkgver"
